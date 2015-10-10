@@ -1,5 +1,6 @@
 package com.example.githubsample.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,8 +14,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.githubsample.R;
 import com.example.githubsample.model.User;
-import com.example.githubsample.util.VolleyAppController;
 import com.example.githubsample.util.Constants;
+import com.example.githubsample.util.VolleyAppController;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,17 +55,20 @@ public class HomeActivity extends AppCompatActivity {
                    Log.e(TAG,"Exception occured at index "+i );
                  }
                }
-               bundle.putSerializable(Constants.KEY_USER_LIST,userList);
+               bundle.putSerializable(Constants.KEY_USER_LIST, userList);
+               Intent intent = new Intent(getApplicationContext(),UserListActivity.class);
+               intent.putExtra(Constants.KEY_USER_LIST,bundle);
+               startActivity(intent);
 
 
           }
         }, new Response.ErrorListener() {
           @Override
           public void onErrorResponse(VolleyError error) {
-
+            Log.e(TAG,error.getMessage(),error);
           }
         });
-
+        requestQueue.add(userRequest);
       }
     });
 
