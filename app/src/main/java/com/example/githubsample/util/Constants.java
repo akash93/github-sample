@@ -1,4 +1,4 @@
-package com.example.githubsample;
+package com.example.githubsample.util;
 
 /**
  * Created by akash on 10/10/15.

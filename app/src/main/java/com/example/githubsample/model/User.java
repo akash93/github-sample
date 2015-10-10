@@ -1,4 +1,6 @@
-package com.example.githubsample;
+package com.example.githubsample.model;
+
+import com.example.githubsample.util.Constants;
 
 import org.json.JSONException;
 import org.json.JSONObject;

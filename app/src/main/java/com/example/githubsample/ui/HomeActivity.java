@@ -1,4 +1,4 @@
-package com.example.githubsample;
+package com.example.githubsample.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.githubsample.R;
+import com.example.githubsample.model.User;
+import com.example.githubsample.util.VolleyAppController;
+import com.example.githubsample.util.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
