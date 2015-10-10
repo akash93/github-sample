@@ -10,4 +10,6 @@ public class Constants {
   public static final String KEY_USER_NAME = "login";
   public static final String KEY_USER_ID = "id";
   public static final String KEY_USER_PROFILE_PIC_URL = "avatar_url";
+
+  public static final String KEY_USER_LIST = "user_list";
 }

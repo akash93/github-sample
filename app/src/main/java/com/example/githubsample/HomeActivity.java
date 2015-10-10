@@ -2,6 +2,7 @@ package com.example.githubsample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,6 +13,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -35,14 +40,26 @@ public class HomeActivity extends AppCompatActivity {
           @Override
           public void onResponse(JSONArray response) {
                Bundle bundle = new Bundle();
-               bundle.put
+               ArrayList<User> userList = new ArrayList<User>();
+               for (int i = 0 ; i<response.length();i++){
+                 try {
+                   JSONObject userObject = response.getJSONObject(i);
+                   User user = new User(userObject);
+                   userList.add(user);
+                 } catch (JSONException e) {
+                   Log.e(TAG,"Exception occured at index "+i );
+                 }
+               }
+               bundle.putSerializable(Constants.KEY_USER_LIST,userList);
+
+
           }
         }, new Response.ErrorListener() {
           @Override
           public void onErrorResponse(VolleyError error) {
 
           }
-        })
+        });
 
       }
     });
